@@ -1,2 +1,2 @@
-# user-management
+# node-user-management
 small user management service.
