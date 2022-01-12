@@ -14,7 +14,7 @@
   
   POST/users/insert
   
-  **request body formate:**
+ **request body formate:**
   
   {"details" :[{"firstname" : "abc","lastname" : "xyz"},{"firstname" : "lmn"}] }
   
@@ -32,7 +32,7 @@
   
   PATCH/updatebyuserid 
   
-  **request body formate: **
+  **request body formate:**
   
   { "details" :[ {"user_id":"16","data":{"firstname" : "abc"},"lastname" : "xyz"}}, {"user_id":"17","data":{"phone_no" : "123"}} ] }
 
