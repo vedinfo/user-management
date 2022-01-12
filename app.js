@@ -98,6 +98,49 @@ app.post("/insert", (req, res) => {
 
 
 /**
+ * this api is used for single/bulk update users by filters.
+ * request body formate: {"details" :[ {"filters":{"user_id" : "1","phone_no" : "253"},"data":{"firstname" : "abc"},"lastname" : "xyz"}}, {"user_id":"17","data":{"phone_no" : "123"}} ] }
+ */
+app.patch("/update", (req, res) => {
+  if (req.body.details.length > 0) {
+    var err = 0;
+    try {
+      for (var i = 0; i < req.body.details.length; i++) {
+        var sql = 'UPDATE users SET ';
+        var sep = '';
+        for (var key in req.body.details[i].data) {
+          sql = sql + sep + key + " = '" + req.body.details[i].data[key] + "'";
+          sep = ',';
+        }
+        sql = sql + " WHERE ";
+        sep = '';
+        for (var key in req.body.details[i].filters) {
+          sql = sql + sep + key + " = '" + req.body.details[i].filters[key] + "'";
+          sep = ' AND ';
+        }
+        console.log(sql);
+        con.query(sql, (error) => {
+          if (error) {
+            err = 1;
+          } else {
+            console.log("success");
+          }
+        });
+      }
+      
+      if (err == 0) {
+        res.send({ success: true, message: 'Data updated' });
+      }
+    } catch (e) {
+      throw e;
+    }
+  } else {
+    res.send({ success: true, message: 'Empty body' });
+  }
+});
+
+
+/**
  * this api is used for single/bulk update users by user_id.
  * request body formate: {"details" :[ {"user_id":"16","data":{"firstname" : "abc"},"lastname" : "xyz"}}, {"user_id":"17","data":{"phone_no" : "123"}} ] }
  */
