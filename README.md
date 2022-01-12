@@ -17,6 +17,16 @@
   **request body formate:**
   
   {"details" :[{"firstname" : "abc","lastname" : "xyz"},{"firstname" : "lmn"}] }
+  
+ 
+  **this api is used for single/bulk update users by filters.**
+  
+  PATCH/update
+  
+  **request body formate:**
+  
+ {"details" :[ {"filters":{"user_id" : "1","phone_no" : "253"},"data":{"firstname" : "abc"},"lastname" : "xyz"}}, {"user_id":"17","data":{"phone_no" : "123"}} ] }
+ 
 
   **this api is used for single/bulk update users by user_id.**
   
