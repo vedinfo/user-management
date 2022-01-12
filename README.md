@@ -30,7 +30,7 @@
 
   **this api is used for single/bulk update users by user_id.**
   
-  PATCH/updatebyuserid 
+  PATCH/updatebyuserid
   
   **request body formate:**
   
